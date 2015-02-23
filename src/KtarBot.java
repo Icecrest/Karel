@@ -318,6 +318,10 @@ public class KtarBot extends Robot{
         }
     }
 
+    /**
+     * @param number up to the maximum value an integer value can carry
+     * @return Builds a number withing the world up.
+     */
     public void placeNumbers(int number){
 
         LinkedList<Integer> stack = new LinkedList<Integer>();

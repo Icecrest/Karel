@@ -51,6 +51,10 @@ public class RemoteBot extends AdvancedBot {
         }
     }
 
+    /**
+     * @return Runs a remote bot by reading strings being input to the console.
+     */
+
     public void Run() {
         Scanner k = new Scanner(System.in);
         String next;
@@ -105,6 +109,8 @@ public class RemoteBot extends AdvancedBot {
                 System.out.println("What number do you want to build?");
                 int num = k.nextInt();
                 placeNumbers(num);
+            }else if(next.equalsIgnoreCase("Origin")){
+                goToOrigin();
             }
         }
         k.close();

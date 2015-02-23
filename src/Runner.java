@@ -12,7 +12,7 @@ import java.awt.*;
         static {
             World.reset();
             World.readWorld("Z:\\Karel\\Worlds\\blockSwerg");
-            World.setDelay(20);
+            World.setDelay(1);
             World.setVisible(true);
         }
     }
