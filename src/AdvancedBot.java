@@ -15,15 +15,6 @@ public class AdvancedBot extends KtarBot {
         super(street, avenue, direction, beepers, badge);
     }
 
-    public void toOrigin(){
-
-        //while(UrRobot.areYouHere == (0,0))
-        if(facingEast()) turn(Input.AROUND);
-        else if(facingNorth()) turn(Input.LEFT);
-        else if(facingSouth()) turn(Input.RIGHT);
-        if(facingWest()) move();
-    }
-
     public void putBeeper(int num) {
         for (int i = 0; i < num; i++) {
             if (!nextToABeeper()) {
@@ -47,27 +38,6 @@ public class AdvancedBot extends KtarBot {
             turnLeft();
         } else {
             System.out.println("Invalid Command");
-        }
-    }
-
-
-    public void buildNum(String num) {
-        for (char c : num.toCharArray()) {
-            switch (c) {
-                case '0':
-                    putBeeper(3);
-                    turnLeft();
-                    putBeeper(5);
-                    turnLeft();
-                    putBeeper(3);
-                    turnLeft();
-                    putBeeper(5);
-                    break;
-                case '1':
-                    putBeeper(3);turn(Input.AROUND);move();turn(Input.RIGHT);putBeeper(5);turn(Input.LEFT);move();
-                    turn(Input.LEFT);move();putBeeper();
-                    break;
-            }
         }
     }
 }
