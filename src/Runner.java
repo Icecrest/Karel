@@ -7,6 +7,7 @@ import java.awt.*;
         public static void main(String args[]) {
             RemoteBot Newton = new RemoteBot(1, 1, East, Integer.MAX_VALUE, Color.RED);
             Newton.Run();
+            Newton.turnOff();
         }
 
         static {
