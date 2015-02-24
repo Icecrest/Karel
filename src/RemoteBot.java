@@ -113,6 +113,10 @@ public class RemoteBot extends AdvancedBot {
                 goToOrigin();
             } else if(next.equalsIgnoreCase("sort")){
                 sortWorld();
+            } else if(next.equalsIgnoreCase("Record")){
+                record();
+            } else if(next.equalsIgnoreCase("play")){
+                play();
             }
         }
         k.close();
