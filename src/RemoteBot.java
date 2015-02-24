@@ -109,8 +109,10 @@ public class RemoteBot extends AdvancedBot {
                 System.out.println("What number do you want to build?");
                 int num = k.nextInt();
                 placeNumbers(num);
-            }else if(next.equalsIgnoreCase("Origin")){
+            } else if(next.equalsIgnoreCase("Origin")){
                 goToOrigin();
+            } else if(next.equalsIgnoreCase("sort")){
+                sortWorld();
             }
         }
         k.close();
