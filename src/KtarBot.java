@@ -32,6 +32,10 @@ public class KtarBot extends Robot{
         super(st, av, dir, beeps, badge);
     }
 
+    /**
+     * Picks up a single line of beepers.
+     */
+    @Deprecated
     void pickUpLine(){
         faceDirection("north");
         int n = 0;
@@ -45,6 +49,10 @@ public class KtarBot extends Robot{
         walk();
     }
 
+    /**
+     * Picks up all beepers in the world.
+     */
+    @Deprecated
     void pickUpAllLines(){
         while(nextToABeeper()){
             pickUpLine();
@@ -53,6 +61,10 @@ public class KtarBot extends Robot{
         }
     }
 
+    /**
+     * Places all picked up beepers in a square fashion.
+     */
+    @Deprecated
     void placeSortedBeepers(){
         goToOrigin();
         for (Integer number : numbers) {
@@ -68,24 +80,38 @@ public class KtarBot extends Robot{
         }
     }
 
+    /**
+    * Picks up all beepers in the world and sorts them.
+    */
     public void sortWorld(){
         pickUpAllLines();
         Collections.sort(numbers);
         placeSortedBeepers();
     }
 
+    /**
+     * Makes the Robot move forward as long as there is a space in front.
+     */
     void walk(){
         while(frontIsClear()){
             move();
         }
     }
 
+    /**
+     * Makes a Robot move a certain number of steps.
+     * @param num to move
+     */
     void moveX(int num){
         for(int n = 0 ; n < num ; n++){
             move();
         }
     }
 
+    /**
+     * Checks if a wall is to the right of a Robot
+     * @return boolean value
+     */
     boolean wallOnRight(){
         turnRight();
 
@@ -99,6 +125,9 @@ public class KtarBot extends Robot{
         return false;
     }
 
+    /**
+     * Walks along a wall as long as there is one and if the front is clear
+     */
     void walkAlongWall(){
         if(wallOnRight() && !frontIsClear()){
             while(wallOnRight() && !frontIsClear()){
@@ -112,6 +141,9 @@ public class KtarBot extends Robot{
         }
     }
 
+    /**
+    * Gets two Robots to find a beeper
+    */
     public void navigateToBeeper2(KtarBot bot1, KtarBot bot2){
         while(!nextToABeeper()){
             bot1.walkAlongWall();
@@ -120,20 +152,33 @@ public class KtarBot extends Robot{
         }
     }
 
+    /**
+     * Brings a single Robot to a beeper
+     */
     public void navigateToBeeper(){
         while(!nextToABeeper()){
             walkAlongWall();
         }
     }
 
+    /**
+     * Turns around to face the opposite direction.
+     */
     void faceOpposite(){
         if(facingNorth()){
             faceDirection("south");
         }else if(facingSouth()){
             faceDirection("north");
+        }else if(facingEast()){
+            faceDirection("west");
+        }else if(facingWest()){
+            faceDirection("east");
         }
     }
 
+    /**
+     *
+     */
     public void evenOrOdd(){
         faceDirection("south");
         //north = odd south = even

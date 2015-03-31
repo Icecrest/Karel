@@ -15,13 +15,18 @@ public class RemoteBot extends AdvancedBot {
 
     }
 
+    /**
+     * Makes a robot move in a line back and forth.
+     */
     public void runLine() {
         if (frontIsClear() == true) {
             move();
-        } else turnLeft();
-        turnLeft();
+        } else turn(Input.AROUND);
     }
 
+    /**
+     * Makes a robot move randomly.
+     */
     public void runAround() {
         if (nextToARobot()) {
             turnLeft();
@@ -52,9 +57,37 @@ public class RemoteBot extends AdvancedBot {
     }
 
     /**
-     * @return Runs a remote bot by reading strings being input to the console.
+     * Makes the Robot go insane for a time.
+     * @Warning VERY LAGGY!
      */
+    public void swerg() {
+        World.setDelay(1);
+        Random rand = new Random();
+        JOptionPane.showMessageDialog(new JDialog(), "Press OK to swerg.",
+                "SWERG IN EXECUTION", JOptionPane.PLAIN_MESSAGE);
+        RemoteBot r = new RemoteBot(1, 1, North, 10, Color.BLACK);
+        RemoteBot a = new RemoteBot(2, 2, North, 10, Color.CYAN);
+        RemoteBot b = new RemoteBot(3, 3, North, 10, Color.YELLOW);
+        RemoteBot c = new RemoteBot(4, 4, North, 10, Color.ORANGE);
+        RemoteBot d = new RemoteBot(5, 5, North, 10, Color.BLUE);
+        RemoteBot e = new RemoteBot(6, 6, North, 10, Color.WHITE);
+        for (int i = 0; i < 1337; i++) {
+            World.setWorldColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
+            World.setNeutroniumColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
+            World.setBeeperColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
+            runAround();
+            r.runAround();
+            a.runAround();
+            b.runAround();
+            c.runAround();
+            d.runAround();
+            e.runAround();
+        }
+    }
 
+    /**
+     * Makes a Robot move around and interact with a world based on console input.
+     */
     public void Run() {
         Scanner k = new Scanner(System.in);
         String next;
@@ -75,28 +108,7 @@ public class RemoteBot extends AdvancedBot {
                 turnLeft();
                 turnLeft();
             } else if (next.equalsIgnoreCase("SWERG")) {
-                World.setDelay(1);
-                Random rand = new Random();
-                JOptionPane.showMessageDialog(new JDialog(), "Press OK to swerg.",
-                        "SWERG IN EXECUTION", JOptionPane.PLAIN_MESSAGE);
-                RemoteBot r = new RemoteBot(1, 1, North, 10, Color.BLACK);
-                RemoteBot a = new RemoteBot(2, 2, North, 10, Color.CYAN);
-                RemoteBot b = new RemoteBot(3, 3, North, 10, Color.YELLOW);
-                RemoteBot c = new RemoteBot(4, 4, North, 10, Color.ORANGE);
-                RemoteBot d = new RemoteBot(5, 5, North, 10, Color.BLUE);
-                RemoteBot e = new RemoteBot(6, 6, North, 10, Color.WHITE);
-                for (int i = 0; i < 1337; i++) {
-                    World.setWorldColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
-                    World.setNeutroniumColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
-                    World.setBeeperColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
-                    runAround();
-                    r.runAround();
-                    a.runAround();
-                    b.runAround();
-                    c.runAround();
-                    d.runAround();
-                    e.runAround();
-                }
+                swerg();
             } else if (next.equalsIgnoreCase("Reset")) {
                 World.reset();
             } else if (next.equalsIgnoreCase("Goodbye")) {
