@@ -1,7 +1,9 @@
 import kareltherobot.*;
+import kareltherobot.Robot;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -22,6 +24,17 @@ public class RemoteBot extends AdvancedBot {
         if (frontIsClear() == true) {
             move();
         } else turn(Input.AROUND);
+    }
+
+    public void swergBots(ArrayList<RemoteBot> bots){
+        int i = 1;
+        int inc = 300;
+        while(i == 1){
+            World.setDelay(1);
+            for(RemoteBot r : bots){
+                turn(Input.AROUND);
+            }
+        }
     }
 
     /**
@@ -65,23 +78,25 @@ public class RemoteBot extends AdvancedBot {
         Random rand = new Random();
         JOptionPane.showMessageDialog(new JDialog(), "Press OK to swerg.",
                 "SWERG IN EXECUTION", JOptionPane.PLAIN_MESSAGE);
-        RemoteBot r = new RemoteBot(1, 1, North, 10, Color.BLACK);
-        RemoteBot a = new RemoteBot(2, 2, North, 10, Color.CYAN);
-        RemoteBot b = new RemoteBot(3, 3, North, 10, Color.YELLOW);
-        RemoteBot c = new RemoteBot(4, 4, North, 10, Color.ORANGE);
-        RemoteBot d = new RemoteBot(5, 5, North, 10, Color.BLUE);
-        RemoteBot e = new RemoteBot(6, 6, North, 10, Color.WHITE);
+        ArrayList<RemoteBot> bots = new ArrayList<RemoteBot>();
+        bots.add(new RemoteBot(rand.nextInt(World.worldCanvas().getHeight()-1),
+                rand.nextInt(World.worldCanvas().getWidth()-1), North, 10, Color.BLACK));
+        bots.add(new RemoteBot(rand.nextInt(World.worldCanvas().getHeight() - 1),
+                rand.nextInt(World.worldCanvas().getWidth() - 1), North, 10, Color.CYAN));
+        bots.add(new RemoteBot(rand.nextInt(World.worldCanvas().getHeight()-1),
+                rand.nextInt(World.worldCanvas().getWidth()-1), North, 10, Color.YELLOW));
+        bots.add(new RemoteBot(rand.nextInt(World.worldCanvas().getHeight()-1),
+                rand.nextInt(World.worldCanvas().getWidth()-1), North, 10, Color.ORANGE));
+        bots.add(new RemoteBot(rand.nextInt(World.worldCanvas().getHeight()-1),
+                rand.nextInt(World.worldCanvas().getWidth()-1), North, 10, Color.BLUE));
+        bots.add(new RemoteBot(rand.nextInt(World.worldCanvas().getHeight()-1),
+                rand.nextInt(World.worldCanvas().getWidth()-1), North, 10, Color.WHITE));
+        swergBots(bots);
         for (int i = 0; i < 1337; i++) {
             World.setWorldColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
             World.setNeutroniumColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
             World.setBeeperColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
-            runAround();
-            r.runAround();
-            a.runAround();
-            b.runAround();
-            c.runAround();
-            d.runAround();
-            e.runAround();
+            turn(Input.AROUND);
         }
     }
 
