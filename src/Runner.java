@@ -2,10 +2,12 @@ import kareltherobot.Directions;
 import kareltherobot.World;
 
 import java.awt.*;
+import java.util.Random;
 
-    public class Runner implements Directions {
+public class Runner implements Directions {
         public static void main(String args[]) {
-            RemoteBot Newton = new RemoteBot(1, 1, East, Integer.MAX_VALUE, Color.RED);
+            Random rand = new Random();
+            RemoteBot Newton = new RemoteBot(1, 1, East, Integer.MAX_VALUE, Color.BLUE);
             Newton.Run();
             Newton.turnOff();
         }
