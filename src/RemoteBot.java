@@ -38,9 +38,21 @@ public class RemoteBot extends AdvancedBot {
     }
 
     /**
+     * @param robots
+     * Makes all robots in a list move around randomly
+     */
+
+    public void runAround(RemoteBot[] robots){
+        for(RemoteBot r : robots){
+            runAround(r);
+        }
+    }
+
+    /**
+     * @param robot
      * Makes a robot move randomly.
      */
-    public void runAround() {
+    public void runAround(RemoteBot robot) {
         if (nextToARobot()) {
             turnLeft();
             if (frontIsClear()) move();
@@ -90,7 +102,7 @@ public class RemoteBot extends AdvancedBot {
             World.setNeutroniumColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
             World.setBeeperColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
             turn(Input.AROUND);
-            turnAround(bots);
+            runAround(bots);
 
         }
     }
@@ -139,6 +151,8 @@ public class RemoteBot extends AdvancedBot {
                 record();
             } else if(next.equalsIgnoreCase("play")){
                 play();
+            } else if(next.equalsIgnoreCase("run")){
+                runAround(this);
             }
         }
         k.close();
