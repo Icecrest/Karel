@@ -102,7 +102,7 @@ public class RemoteBot extends AdvancedBot {
             World.setNeutroniumColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
             World.setBeeperColor(new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256)));
             turn(Input.AROUND);
-            runAround(bots);
+            turnAround(bots);
 
         }
     }
