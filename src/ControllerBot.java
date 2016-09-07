@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.beans.EventHandler;
 import java.util.EventListener;
+import java.util.ResourceBundle;
 
 import static java.awt.event.KeyEvent.*;
 
@@ -24,8 +25,6 @@ public class ControllerBot extends AdvancedBot{
 
         @Override
         public void keyPressed(KeyEvent e) {
-            int code = e.getKeyCode();
-
             switch(e.getKeyCode()){
                 case VK_W | VK_UP:
                     if (facingNorth()) {
@@ -37,6 +36,7 @@ public class ControllerBot extends AdvancedBot{
                     } else if (facingWest()) {
                         turn(Input.RIGHT);
                     }
+                    System.out.print("Should be working");
                     break;
                 case VK_A | VK_LEFT:
                     if (facingNorth()) {
@@ -85,6 +85,8 @@ public class ControllerBot extends AdvancedBot{
 
         }
     }
+
+    public final ControlListener listener = new ControlListener();
 
     private boolean run = true;
 
