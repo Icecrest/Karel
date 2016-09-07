@@ -4,7 +4,6 @@ import kareltherobot.UrRobot;
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
 
 /**
  * Created by SCurley3465 on 2/17/2015.
@@ -40,4 +39,5 @@ public class AdvancedBot extends KtarBot {
             System.out.println("Invalid Command");
         }
     }
+
 }
