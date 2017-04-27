@@ -18,7 +18,8 @@ public class AdvancedBot extends KtarBot {
         for (int i = 0; i < num; i++) {
             if (!nextToABeeper()) {
                 putBeeper();
-            }move();
+            }
+            move();
         }
         turn(Input.AROUND);
         move();
